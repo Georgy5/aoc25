@@ -11,17 +11,18 @@ class CircularCounter
     @password_counter
   end
 
-  def move_left(clicks)
-    @pos = (@pos - clicks) % @size
+  def move(direction, clicks)
+    rotation = direction == "L" ? clicks.-@ : clicks
+    @pos = (@pos + rotation) % @size
     @password_counter += 1 if @pos == 0
     @pos
+  end
+
+  def move_left(clicks)
+    move("L", clicks)
   end
 
   def move_right(clicks)
-    @pos = (@pos + clicks) % @size
-    @password_counter += 1 if @pos == 0
-    @pos
+    move("R", clicks)
   end
 end
-
-# Note: dial steps = 0..99
