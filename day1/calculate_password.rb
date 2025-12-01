@@ -1,16 +1,26 @@
-require_relative 'circular_counter'
+# require_relative 'circular_counter'
+require_relative 'circular_counter2'
 
-def calculate_password
-  filename = 'input'
+ROTATIONS = "L68
+L30
+R48
+L5
+R60
+L55
+L1
+L99
+R14
+L82
+".freeze
+
+def caclulate_password
   circle = CircularCounter.new
   count = 0
-  File.readlines(filename, chomp: true).each do |rotation|
-    next if rotation.strip.empty?
-
+  ROTATIONS.each_line do |rotation|
     pos = circle.move(rotation)
     count = circle.password_counter
   end
   count
 end
 
-puts calculate_password
+puts caclulate_password
