@@ -1,14 +1,10 @@
 class CircularCounter
-  attr_reader :pos
+  attr_reader :pos, :password_counter
 
   def initialize
     @size = 100
     @password_counter = 0
     @pos = 50
-  end
-
-  def password_counter
-    @password_counter
   end
 
   def move(input)
