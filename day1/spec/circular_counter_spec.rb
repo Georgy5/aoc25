@@ -19,36 +19,32 @@ describe CircularCounter do
   end
 
   describe "#password_counter" do
-    it "The password counter is initlaised to 0" do
+    it "The password counter is initalised to 0" do
       expect(subject.password_counter).to eq(0)
     end
   end
 
-  describe "#move_left" do
+  describe "#move" do
     it "The dial turns left 68 clicks" do
-      expect(subject.move_left(68)).to eq(82)
+      expect(subject.move("L68")).to eq(82)
     end
 
     it "The dial turns left 30 clicks" do
-      expect(subject.move_left(30)).to eq(20)
+      expect(subject.move("L30")).to eq(20)
     end
-  end
 
-  describe "#move_right" do
     it "The dial turns right 48 clicks" do
-      expect(subject.move_right(48)).to eq(98)
+      expect(subject.move("R48")).to eq(98)
     end
-  end
 
-  describe "#move_right" do
     it "The dial turns right 55 clicks" do
-      expect(subject.move_right(55)).to eq(5)
+      expect(subject.move("R55")).to eq(5)
     end
   end
 
   describe "#password_counter" do
     it "The dial pointed to zero once" do
-      subject.move_right(50)
+      subject.move("R50")
       expect(subject.password_counter).to eq(1)
     end
   end
