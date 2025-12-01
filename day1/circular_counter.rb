@@ -11,18 +11,12 @@ class CircularCounter
     @password_counter
   end
 
-  def move(direction, clicks)
+  def move(input)
+    direction, clicks = input.match(/^([LR])(\d+)$/).captures
+    clicks = clicks.to_i
     rotation = direction == "L" ? clicks.-@ : clicks
     @pos = (@pos + rotation) % @size
     @password_counter += 1 if @pos == 0
     @pos
-  end
-
-  def move_left(clicks)
-    move("L", clicks)
-  end
-
-  def move_right(clicks)
-    move("R", clicks)
   end
 end
