@@ -1,8 +1,3 @@
-input = "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,
-1698522-1698528,446443-446449,38593856-38593862,565653-565659,
-824824821-824824827,2121212118-2121212124"
-input = input.delete("\n")
-
 def is_id_invalid?(id)
   id_str = id.to_s
 
@@ -29,17 +24,17 @@ def get_invalid_ids(id_range)
 end
 
 @all_invalid_ids = []
+filename = 'input'
+File.readlines(filename, chomp: true).each do |input|
+  ranges = input.split(",").map do |part|
+    start_str, end_str = part.split("-")
+    (start_str.to_i..end_str.to_i)
+  end
 
-ranges = input.split(",").map do |part|
-  start_str, end_str = part.split("-")
-  (start_str.to_i..end_str.to_i)
-end
-
-ranges.each do |range|
-  puts "Processing range: #{range}"
-  invalid_ids = get_invalid_ids(range)
-  @all_invalid_ids.push invalid_ids
-  puts "Invalid IDs in range #{range}: #{invalid_ids}"
+  ranges.each do |range|
+    invalid_ids = get_invalid_ids(range)
+    @all_invalid_ids.push invalid_ids
+  end
 end
 
 p @all_invalid_ids.flatten!.sum
