@@ -38,3 +38,11 @@ class PrintingGrid
     y >= 0 && y < @grid.length && x >= 0 && x < @grid[0].length
   end
 end
+
+filename = 'input'
+accessible_paper_roll_count = 0
+input = File.readlines(filename, chomp: true)
+
+forklift_work = PrintingGrid.new(input)
+accessible_paper_roll_count += forklift_work.accessible_rolls_count
+puts accessible_paper_roll_count
