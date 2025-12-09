@@ -1,12 +1,17 @@
 require_relative "../tachyon_beam.rb"
 
 simple_map    =  "....S....
-                  ....|....
-                  ...|^|...
-                  ...|.|..."
+                  .........
+                  ....^....
+                  ........."
 
 
 example_map   = [['.','.','.','.','S','.','.','.','.'],
+                 ['.','.','.','.','.','.','.','.','.'],
+                 ['.','.','.','.','^','.','.','.','.'],
+                 ['.','.','.','.','.','.','.','.','.']]
+
+beam_map      = [['.','.','.','.','S','.','.','.','.'],
                  ['.','.','.','.','|','.','.','.','.'],
                  ['.','.','.','|','^','|','.','.','.'],
                  ['.','.','.','|','.','|','.','.','.']]
@@ -15,6 +20,12 @@ describe "Teleportation Laboratory" do
   describe "#create_map_from_string" do
     it "creates a 2d array from the string input" do
       expect(create_map_from_string(simple_map)).to eq(example_map)
+    end
+  end
+
+  describe "#sum_up_beam_splits" do
+    it "returns how many times the tachyon beam was split" do
+      expect(sum_up_beam_splits(simple_map)).to eq(1)
     end
   end
 end
